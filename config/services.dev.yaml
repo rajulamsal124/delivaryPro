@@ -1,0 +1,18 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
+services:
+    Aws\DynamoDb\DynamoDbClient:
+        class: Aws\DynamoDb\DynamoDbClient
+        arguments:
+            $args:
+                region: 'us-west-2'               # Replace with your preferred region
+                version: 'latest'                # API version
+                endpoint: 'https://localhost.localstack.cloud:4566' # LocalStack endpoint
+                credentials:
+                    key: 'test'                  # Dummy key for LocalStack
+                    secret: 'test'               # Dummy secret for LocalStack
